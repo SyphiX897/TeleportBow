@@ -1,16 +1,23 @@
 
+#=======================#
+#      TeleportBow      #
+#      By SyphiX        #
+#=======================#
+
+give-on-join: true
+#You are able to choose if you want to give to everyone a TeleportBow on join
+sound-on-shoot: "BLOCK_GLASS_BREAK"
+#You are able to choose if you want to play sound whenever players shoot an arrow
+
 teleport-bow:
   display-name: "<#0080ff>Teleport Bow"
-  show-enchant: true
+  enchantment-particle: true
   unbreakable: true
   slot: 0
 
 arrow:
   display-name: "<#0080ff>Arrow"
   slot: 9
-
-
-give-on-join: true
 
 
 
