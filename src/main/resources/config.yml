@@ -1,0 +1,17 @@
+
+teleport-bow:
+  display-name: "<#0080ff>Teleport Bow"
+  show-enchant: true
+  unbreakable: true
+  slot: 0
+
+arrow:
+  display-name: "<#0080ff>Arrow"
+  slot: 9
+
+
+give-on-join: true
+
+
+
+

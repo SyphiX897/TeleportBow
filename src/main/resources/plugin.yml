@@ -1,0 +1,4 @@
+name: TeleportBow
+version: '${version}'
+main: ir.syphix.teleportbow.TeleportBow
+api-version: '1.20'
