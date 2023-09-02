@@ -28,7 +28,7 @@ public class Items {
             meta.getPersistentDataContainer().set(TYPE_KEY, PersistentDataType.STRING, "teleportBow");
             meta.setUnbreakable(config.getBoolean("teleport-bow.unbreakable"));
         });
-        if (config.getBoolean("teleport-bow.enchantment-particle")) {
+        if (config.getBoolean("teleport-bow.show-enchant")) {
             bow.addEnchantment(Enchantment.MENDING, 1);
             bow.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             bow.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
