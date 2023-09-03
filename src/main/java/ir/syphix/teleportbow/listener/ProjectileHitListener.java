@@ -28,9 +28,9 @@ public class ProjectileHitListener implements Listener {
                         if (config.getBoolean("teleport-to-entity")) {
                             Location hitEntityLocation = event.getEntity().getLocation();
                             player.teleport(entityLocation(player, hitEntityLocation));
-                            arrowGiver(player, event.getEntity());
-                            return;
                         }
+                        arrowGiver(player, event.getEntity());
+                        return;
                     }
                     if (event.getHitBlock() != null) {
                         if (config.getBoolean("teleport-to-block")) {
@@ -40,8 +40,8 @@ public class ProjectileHitListener implements Listener {
                             player.teleport(arrowLocation(player, arrowLocation));
 
                             player.setInvulnerable(false);
-                            arrowGiver(player, event.getEntity());
                         }
+                        arrowGiver(player, event.getEntity());
                     }
                 }
             }
