@@ -12,6 +12,10 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Items {
 
     static FileConfiguration config = Origin.getPlugin().getConfig();
@@ -22,11 +26,16 @@ public class Items {
 
     public static ItemStack getTeleportBow() {
         ItemStack bow = new ItemStack(Material.BOW);
+        List<Component> lore = new ArrayList<>();
+        for (String configLore: config.getStringList("teleport-bow.lore")) {
+            lore.add(toComponent(configLore).decoration(TextDecoration.ITALIC, false));
+        }
         bow.editMeta(meta -> {
             meta.displayName(toComponent(config.getString("teleport-bow.display-name")).decoration(TextDecoration.ITALIC, false));
             meta.getPersistentDataContainer().set(CUSTOME_ITEM_KEY, PersistentDataType.STRING, "teleportBow");
             meta.getPersistentDataContainer().set(TYPE_KEY, PersistentDataType.STRING, "teleportBow");
             meta.setUnbreakable(config.getBoolean("teleport-bow.unbreakable"));
+            meta.lore(lore);
         });
         if (config.getBoolean("teleport-bow.enchantment-particle")) {
             bow.addEnchantment(Enchantment.MENDING, 1);
@@ -41,10 +50,15 @@ public class Items {
 
     public static ItemStack getArrow() {
         ItemStack arrow = new ItemStack(Material.ARROW);
+        List<Component> lore = new ArrayList<>();
+        for (String configLore: config.getStringList("arrow.lore")) {
+            lore.add(toComponent(configLore).decoration(TextDecoration.ITALIC, false));
+        }
         arrow.editMeta(meta -> {
             meta.displayName(toComponent(config.getString("arrow.display-name")).decoration(TextDecoration.ITALIC, false));
             meta.getPersistentDataContainer().set(CUSTOME_ITEM_KEY, PersistentDataType.STRING, "arrow");
             meta.getPersistentDataContainer().set(TYPE_KEY, PersistentDataType.STRING, "teleportBowArrow");
+            meta.lore(lore);
         });
 
 

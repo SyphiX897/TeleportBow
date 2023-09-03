@@ -11,12 +11,18 @@ sound-on-shoot: "BLOCK_GLASS_BREAK"
 
 teleport-bow:
   display-name: "<#0080ff>Teleport Bow"
+  lore:
+    - ""
+    - "<aqua>By SyphiX"
   enchantment-particle: true
   unbreakable: true
   slot: 0
 
 arrow:
   display-name: "<#0080ff>Arrow"
+  lore:
+    - ""
+    - "<aqua>By SyphiX"
   slot: 9
 
 
