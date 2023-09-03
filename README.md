@@ -13,3 +13,6 @@ Minecraft Version: 1.20
 2. teleportbow.drop
 3. teleportbow.changeslot
 4. teleportbow.commands
+
+# Found any problems? contact to me
+Discord id: .syphix
