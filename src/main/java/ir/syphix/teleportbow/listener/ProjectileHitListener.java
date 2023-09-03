@@ -19,8 +19,10 @@ public class ProjectileHitListener implements Listener {
 
     @EventHandler
     public void onHit(ProjectileHitEvent event) {
-        if (event.getEntity().getShooter() instanceof Player player) {
-            if (!(event.getEntity() instanceof Arrow arrow)) return;
+        if (event.getEntity().getShooter() instanceof Player) {
+            Player player = (Player) event.getEntity().getShooter();
+            if (!(event.getEntity() instanceof Arrow)) return;
+            Arrow arrow = (Arrow) event.getEntity();
             PersistentDataContainer arrowData = arrow.getPersistentDataContainer();
             if (arrowData.has(Items.ARROW_ENTITY_KEY)) {
                 if (player.hasPermission("teleportbow.use")) {
