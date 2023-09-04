@@ -28,6 +28,9 @@ public class ProjectileLaunchListener implements Listener {
             player.playSound(player.getLocation(), soundOnShoot, 10, 30);
             Arrow arrow = (Arrow) event.getEntity();
             arrow.getPersistentDataContainer().set(Items.ARROW_ENTITY_KEY, PersistentDataType.BOOLEAN, true);
+            if (config.getBoolean("no-arrow-damage")) {
+                arrow.setDamage(0.0);
+            }
         }
     }
 

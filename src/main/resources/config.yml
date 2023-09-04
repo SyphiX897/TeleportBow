@@ -12,6 +12,8 @@ teleport-to-entity: true
 #You are able to choose if you want to teleport players to entity whenever they hit an entities with TeleportBow
 teleport-to-block: true
 #You are able to choose if you want to teleport players to block whenever they hit a block with TeleportBow
+no-arrow-damage: false
+#You are able to choose if you want to set arrow damage to 0
 
 teleport-bow:
   display-name: "<#0080ff>Teleport Bow"
