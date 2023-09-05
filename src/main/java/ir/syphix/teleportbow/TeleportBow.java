@@ -16,15 +16,11 @@ public final class TeleportBow extends OriginPlugin {
         Origin.registerListener(new BowMoveListener());
         Origin.registerListener(new ProjectileHitListener());
         Origin.registerListener(new ProjectileLaunchListener());
+        Origin.registerListener(new EntityDamageByEntityListener());
 
 //        getCommand("givebow").setExecutor(new GiveBowCommandOldMotherFucker());
         new GiveBowCommand();
 
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
     }
 
 }

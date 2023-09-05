@@ -19,17 +19,15 @@ public class ProjectileLaunchListener implements Listener {
 
     @EventHandler
     public void onHit(ProjectileLaunchEvent event) {
-        if (event.getEntity().getShooter() instanceof Player && event.getEntity() instanceof Arrow) {
-            Player player = (Player) event.getEntity().getShooter();
+        if (event.getEntity().getShooter() instanceof Player player && event.getEntity() instanceof Arrow arrow) {
             if (!player.getInventory().getItemInMainHand().hasItemMeta()) return;
             PersistentDataContainer itemData = player.getInventory().getItemInMainHand().getItemMeta().getPersistentDataContainer();
             if (!itemData.has(Items.TYPE_KEY)) return;
             Sound soundOnShoot = Sound.valueOf(config.getString("sound-on-shoot"));
             player.playSound(player.getLocation(), soundOnShoot, 10, 30);
-            Arrow arrow = (Arrow) event.getEntity();
             arrow.getPersistentDataContainer().set(Items.ARROW_ENTITY_KEY, PersistentDataType.BOOLEAN, true);
-            if (config.getBoolean("no-arrow-damage")) {
-                arrow.setDamage(0.0);
+            if (config.getBoolean("glowing-arrow")) {
+                arrow.setGlowing(true);
             }
         }
     }
