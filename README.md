@@ -15,4 +15,4 @@ Minecraft Version: 1.20
 4. teleportbow.commands
 
 # Found any problems? contact to me
-Discord id: .syphix
+Discord ID: .syphix
