@@ -27,6 +27,8 @@ teleport-bow:
 
 arrow:
   display-name: "<#0080ff>Arrow"
+  custom-name: "<green>Arrow"
+  # If you want to disable this feature set it to ""
   lore:
     - ""
     - "<aqua>By SyphiX"

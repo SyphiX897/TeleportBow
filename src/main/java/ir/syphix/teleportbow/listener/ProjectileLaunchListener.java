@@ -2,6 +2,7 @@ package ir.syphix.teleportbow.listener;
 
 import ir.syphix.teleportbow.item.Items;
 import ir.syrent.origin.paper.Origin;
+import ir.syrent.origin.paper.utils.ComponentUtils;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Arrow;
@@ -28,6 +29,10 @@ public class ProjectileLaunchListener implements Listener {
             arrow.getPersistentDataContainer().set(Items.ARROW_ENTITY_KEY, PersistentDataType.BOOLEAN, true);
             if (config.getBoolean("glowing-arrow")) {
                 arrow.setGlowing(true);
+            }
+            if (config.getString("arrow.custom-name") != "") {
+                arrow.customName(ComponentUtils.component(config.getString("arrow.custom-name")));
+                arrow.setCustomNameVisible(true);
             }
         }
     }
