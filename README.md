@@ -15,7 +15,7 @@ Minecraft Version: 1.20
 4. teleportbow.commands
 
 # Commands:
-1. /givebow - Give the TeleportBow
+1. /givebow - Give the TeleportBow and arrow
 2. /givebow <player_name> - Gives the TeleportBow and arrow to a player.
 
 # Found any problems? contact to me
