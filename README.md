@@ -14,5 +14,9 @@ Minecraft Version: 1.20
 3. teleportbow.changeslot
 4. teleportbow.commands
 
+# Commands:
+1. givebow
+2. givebow <player_name>
+
 # Found any problems? contact to me
 Discord ID: .syphix
