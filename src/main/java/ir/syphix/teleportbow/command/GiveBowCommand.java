@@ -11,6 +11,8 @@ import ir.syrent.origin.paper.utils.ComponentUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;

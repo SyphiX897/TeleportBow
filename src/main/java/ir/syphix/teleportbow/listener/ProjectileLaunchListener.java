@@ -24,13 +24,13 @@ public class ProjectileLaunchListener implements Listener {
             if (!player.getInventory().getItemInMainHand().hasItemMeta()) return;
             PersistentDataContainer itemData = player.getInventory().getItemInMainHand().getItemMeta().getPersistentDataContainer();
             if (!itemData.has(Items.TYPE_KEY)) return;
-            Sound soundOnShoot = Sound.valueOf(config.getString("sound-on-shoot"));
+            Sound soundOnShoot = Sound.valueOf(config.getString("sound_on_shoot"));
             player.playSound(player.getLocation(), soundOnShoot, 10, 30);
             arrow.getPersistentDataContainer().set(Items.ARROW_ENTITY_KEY, PersistentDataType.BOOLEAN, true);
-            if (config.getBoolean("glowing-arrow")) {
+            if (config.getBoolean("glowing_arrow")) {
                 arrow.setGlowing(true);
             }
-            if (config.getString("arrow.custom-name") != "") {
+            if (config.getString("arrow.custom_name") != "") {
                 arrow.customName(ComponentUtils.component(config.getString("arrow.custom-name")));
                 arrow.setCustomNameVisible(true);
             }

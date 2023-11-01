@@ -25,7 +25,7 @@ public class ProjectileHitListener implements Listener {
             if (arrowData.has(Items.ARROW_ENTITY_KEY)) {
                 if (player.hasPermission("teleportbow.use")) {
                     if (event.getHitEntity() != null) {
-                        if (config.getBoolean("teleport-to-entity")) {
+                        if (config.getBoolean("teleport_to_entity")) {
                             Location hitEntityLocation = event.getEntity().getLocation();
                             player.teleport(entityLocation(player, hitEntityLocation));
                         }
@@ -33,7 +33,7 @@ public class ProjectileHitListener implements Listener {
                         return;
                     }
                     if (event.getHitBlock() != null) {
-                        if (config.getBoolean("teleport-to-block")) {
+                        if (config.getBoolean("teleport_to_block")) {
                             Location arrowLocation = event.getEntity().getLocation();
                             player.setInvulnerable(true);
 
@@ -50,7 +50,9 @@ public class ProjectileHitListener implements Listener {
 
     public void arrowGiver(Player player, Entity arrow) {
         arrow.remove();
-        player.getInventory().setItem(config.getInt("arrow.slot"), Items.getArrow());
+        if (!player.isDead()) {
+            player.getInventory().setItem(config.getInt("arrow.slot"), Items.getArrow());
+        }
     }
     public Location arrowLocation(Player player, Location arrowLocation) {
         float playerYaw = player.getEyeLocation().getYaw();

@@ -1,10 +1,9 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'ir.syphix'
-version = '1.0.5'
+version = '1.0.6'
 
 repositories {
     mavenCentral()
@@ -24,7 +23,7 @@ repositories {
 
 dependencies {
     compileOnly "io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT"
-    implementation "com.github.Syrent:Origin:1.4.1"
+    compileOnly "com.github.Syrent:Origin:1.4.1"
 }
 
 def targetJavaVersion = 17

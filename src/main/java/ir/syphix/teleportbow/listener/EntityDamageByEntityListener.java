@@ -16,7 +16,7 @@ public class EntityDamageByEntityListener implements Listener {
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        if (!config.getBoolean("no-arrow-damage")) return;
+        if (!config.getBoolean("no_arrow_damage")) return;
         if (event.getDamager() instanceof Arrow arrow) {
             if (arrow.getShooter() instanceof Player player) {
                 PersistentDataContainer arrowData = arrow.getPersistentDataContainer();

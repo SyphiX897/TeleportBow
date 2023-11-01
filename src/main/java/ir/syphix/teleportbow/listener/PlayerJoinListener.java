@@ -18,7 +18,7 @@ public class PlayerJoinListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        if (config.getBoolean("give-on-join")) {
+        if (config.getBoolean("give_on_join")) {
 
             for (int i = 0; i <= player.getInventory().getSize(); i++) {
                 ItemStack item = player.getInventory().getItem(i);

@@ -1,34 +1,35 @@
 #=======================#
 #      TeleportBow      #
-#      By SyphiX        #
+#       By SyphiX       #
 #=======================#
 
-give-on-join: true
+give_on_join: true
 #You are able to choose if you want to give to everyone a TeleportBow on join
-sound-on-shoot: "BLOCK_GLASS_BREAK"
+sound_on_shoot: "BLOCK_GLASS_BREAK"
 #You are able to choose if you want to play sound whenever players shoot an arrow
-teleport-to-entity: true
+teleport_to_entity: true
 #You are able to choose if you want to teleport players to entity whenever they hit an entities with TeleportBow
-teleport-to-block: true
+teleport_to_block: true
 #You are able to choose if you want to teleport players to block whenever they hit a block with TeleportBow
-no-arrow-damage: false
+no_arrow_damage: false
 #You are able to choose if you want to set arrow damage to 0
-glowing-arrow: false
+glowing_arrow: false
 #You are able to choose if you want to set glowing on arrow
+drop_on_death: false
 
-teleport-bow:
-  display-name: "<#0080ff>Teleport Bow"
+bow:
+  display_name: "<#0080ff>Teleport Bow"
   lore:
     - ""
     - "<aqua>By SyphiX"
-  enchantment-particle: true
+  enchantment_particle: true
   unbreakable: true
   slot: 0
 
 arrow:
-  display-name: "<#0080ff>Arrow"
-  custom-name: "<green>Arrow"
-  # If you want to disable this feature set it to ""
+  display_name: "<#0080ff>Arrow"
+  custom_name: "<green>Arrow"
+  # If you want to disable this feature, set it to ""
   lore:
     - ""
     - "<aqua>By SyphiX"
