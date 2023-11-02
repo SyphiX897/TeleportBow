@@ -30,8 +30,14 @@ public class ProjectileLaunchListener implements Listener {
             if (config.getBoolean("glowing_arrow")) {
                 arrow.setGlowing(true);
             }
-            if (config.getString("arrow.custom_name") != "") {
-                arrow.customName(ComponentUtils.component(config.getString("arrow.custom-name")));
+            String customName = config.getString("arrow.custom_name");
+
+            if (customName == null) {
+                throw new NullPointerException("Arrow custom name is null on configuration file, please set a valid value for it.");
+            }
+
+            if (!customName.isEmpty()) {
+                arrow.customName(ComponentUtils.component(customName));
                 arrow.setCustomNameVisible(true);
             }
         }

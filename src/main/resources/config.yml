@@ -3,34 +3,38 @@
 #       By SyphiX       #
 #=======================#
 
+# Note:
+# Teleport items are referred to Teleport Bow and Teleport Arrow
+
+# Give teleport items
 give_on_join: true
-#You are able to choose if you want to give to everyone a TeleportBow on join
+# The sound that will be played after the player shoots the arrow using the teleport bow
 sound_on_shoot: "BLOCK_GLASS_BREAK"
-#You are able to choose if you want to play sound whenever players shoot an arrow
+# Should player teleport to arrow location if it hit an entity?
 teleport_to_entity: true
-#You are able to choose if you want to teleport players to entity whenever they hit an entities with TeleportBow
+# Should player teleport to arrow location if it hit a block?
 teleport_to_block: true
-#You are able to choose if you want to teleport players to block whenever they hit a block with TeleportBow
+# Prevent arrow damage on hit
 no_arrow_damage: false
-#You are able to choose if you want to set arrow damage to 0
+# Set glowing effect on arrow
 glowing_arrow: false
-#You are able to choose if you want to set glowing on arrow
+# Drop teleport items on death
 drop_on_death: false
 
 bow:
   display_name: "<#0080ff>Teleport Bow"
   lore:
     - ""
-    - "<aqua>By SyphiX"
+    - "<aqua>Jump between universe! Don't believe me? try and see!"
   enchantment_particle: true
   unbreakable: true
   slot: 0
 
 arrow:
   display_name: "<#0080ff>Arrow"
-  custom_name: "<green>Arrow"
   # If you want to disable this feature, set it to ""
+  custom_name: "<green>Arrow"
   lore:
     - ""
-    - "<aqua>By SyphiX"
+    - "<aqua>The arrow of gods that's been used by Apollo itself."
   slot: 9
