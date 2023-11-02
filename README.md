@@ -14,5 +14,9 @@ Minecraft Version: 1.20
 3. teleportbow.changeslot
 4. teleportbow.commands
 
+# Commands:
+1. /givebow - Give the TeleportBow and arrow
+2. /givebow <player_name> - Gives the TeleportBow and arrow to a player.
+
 # Found any problems? contact to me
 Discord ID: .syphix
