@@ -2,4 +2,4 @@ name: TeleportBow
 version: '${version}'
 main: ir.syphix.teleportbow.TeleportBow
 loader: ir.syphix.teleportbow.TeleportBowLoader
-api-version: '1.20'
+api-version: '1.19'

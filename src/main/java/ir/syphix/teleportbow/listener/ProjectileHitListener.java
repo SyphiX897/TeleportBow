@@ -1,6 +1,6 @@
 package ir.syphix.teleportbow.listener;
 
-import ir.syphix.teleportbow.item.Items;
+import ir.syphix.teleportbow.utils.Items;
 import ir.syrent.origin.paper.Origin;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;

@@ -3,7 +3,7 @@ package ir.syphix.teleportbow.command;
 import cloud.commandframework.Command.Builder;
 import cloud.commandframework.Completion;
 import cloud.commandframework.arguments.standard.StringArgument;
-import ir.syphix.teleportbow.item.Items;
+import ir.syphix.teleportbow.utils.Items;
 import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.command.Command;
 import ir.syrent.origin.paper.command.interfaces.ISender;
@@ -11,8 +11,6 @@ import ir.syrent.origin.paper.utils.ComponentUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;

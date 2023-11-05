@@ -1,6 +1,6 @@
 package ir.syphix.teleportbow.listener;
 
-import ir.syphix.teleportbow.item.Items;
+import ir.syphix.teleportbow.utils.Items;
 import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.utils.ComponentUtils;
 import org.bukkit.Sound;
@@ -26,7 +26,7 @@ public class ProjectileLaunchListener implements Listener {
             if (!itemData.has(Items.TYPE_KEY)) return;
             Sound soundOnShoot = Sound.valueOf(config.getString("sound_on_shoot"));
             player.playSound(player.getLocation(), soundOnShoot, 10, 30);
-            arrow.getPersistentDataContainer().set(Items.ARROW_ENTITY_KEY, PersistentDataType.BOOLEAN, true);
+            arrow.getPersistentDataContainer().set(Items.ARROW_ENTITY_KEY, PersistentDataType.STRING, "arrow");
             if (config.getBoolean("glowing_arrow")) {
                 arrow.setGlowing(true);
             }

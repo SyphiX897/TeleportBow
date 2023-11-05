@@ -1,4 +1,4 @@
-package ir.syphix.teleportbow.item;
+package ir.syphix.teleportbow.utils;
 
 import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.utils.ComponentUtils;
