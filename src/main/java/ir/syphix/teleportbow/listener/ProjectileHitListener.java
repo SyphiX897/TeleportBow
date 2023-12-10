@@ -50,9 +50,10 @@ public class ProjectileHitListener implements Listener {
 
     public void arrowGiver(Player player, Entity arrow) {
         arrow.remove();
-        if (!player.isDead()) {
-            player.getInventory().setItem(config.getInt("arrow.slot"), Items.getArrow());
-        }
+
+        if (player.isDead()) return;
+
+        player.getInventory().setItem(config.getInt("arrow.slot"), Items.getArrow());
     }
     public Location arrowLocation(Player player, Location arrowLocation) {
         float playerYaw = player.getEyeLocation().getYaw();

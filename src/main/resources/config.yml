@@ -21,6 +21,8 @@ glowing_arrow: false
 # Drop teleport items on death
 drop_on_death: false
 
+infinity_arrow: false
+
 bow:
   display_name: "<#0080ff>Teleport Bow"
   lore:

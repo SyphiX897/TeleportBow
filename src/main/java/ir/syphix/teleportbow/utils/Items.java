@@ -28,10 +28,10 @@ public class Items {
         ItemStack bow = new ItemStack(Material.BOW);
         List<Component> lore = new ArrayList<>();
         for (String configLore: config.getStringList("bow.lore")) {
-            lore.add(toComponent(configLore).decoration(TextDecoration.ITALIC, false));
+            lore.add(ComponentUtils.component(configLore).decoration(TextDecoration.ITALIC, false));
         }
         bow.editMeta(meta -> {
-            meta.displayName(toComponent(config.getString("bow.display_name")).decoration(TextDecoration.ITALIC, false));
+            meta.displayName(ComponentUtils.component(config.getString("bow.display_name")).decoration(TextDecoration.ITALIC, false));
             meta.getPersistentDataContainer().set(CUSTOME_ITEM_KEY, PersistentDataType.STRING, "teleportBow");
             meta.getPersistentDataContainer().set(TYPE_KEY, PersistentDataType.STRING, "teleportBow");
             meta.setUnbreakable(config.getBoolean("bow.unbreakable"));
@@ -52,20 +52,15 @@ public class Items {
         ItemStack arrow = new ItemStack(Material.ARROW);
         List<Component> lore = new ArrayList<>();
         for (String configLore: config.getStringList("arrow.lore")) {
-            lore.add(toComponent(configLore).decoration(TextDecoration.ITALIC, false));
+            lore.add(ComponentUtils.component(configLore).decoration(TextDecoration.ITALIC, false));
         }
         arrow.editMeta(meta -> {
-            meta.displayName(toComponent(config.getString("arrow.display_name")).decoration(TextDecoration.ITALIC, false));
+            meta.displayName(ComponentUtils.component(config.getString("arrow.display_name")).decoration(TextDecoration.ITALIC, false));
             meta.getPersistentDataContainer().set(CUSTOME_ITEM_KEY, PersistentDataType.STRING, "arrow");
             meta.getPersistentDataContainer().set(TYPE_KEY, PersistentDataType.STRING, "teleportBowArrow");
             meta.lore(lore);
         });
         return arrow;
-    }
-
-
-    public static Component toComponent(String content) {
-        return ComponentUtils.component(content);
     }
 
 
