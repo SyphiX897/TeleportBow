@@ -18,6 +18,7 @@ public final class TeleportBow extends OriginPlugin {
         Origin.registerListener(new ProjectileLaunchListener());
         Origin.registerListener(new EntityDamageByEntityListener());
         Origin.registerListener(new PlayerDeathListener());
+        Origin.registerListener(new PlayerRespawnListener());
 
         new GiveBowCommand();
 

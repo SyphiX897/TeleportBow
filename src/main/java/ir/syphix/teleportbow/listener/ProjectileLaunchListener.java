@@ -28,9 +28,9 @@ public class ProjectileLaunchListener implements Listener {
             ItemStack mainHandItem = player.getInventory().getItemInMainHand();
             ItemStack offHandItem = player.getInventory().getItemInOffHand();
 
-            if (!player.getInventory().getItemInMainHand().hasItemMeta() && !offHandItem.hasItemMeta()) return;
+            if (!mainHandItem.hasItemMeta() && !offHandItem.hasItemMeta()) return;
 
-            String hand = "null";
+            String hand = null;
 
             if (mainHandItem.getType().equals(Material.BOW) &&
                     mainHandItem.hasItemMeta()) {
@@ -53,6 +53,12 @@ public class ProjectileLaunchListener implements Listener {
             }
 
             if (!itemData.has(Items.TYPE_KEY)) return;
+
+            if (!player.hasPermission("teleportbow.use")) {
+                player.sendMessage(ComponentUtils.component("<gradient:dark_red:red>You dont have permission to use TeleportBow!"));
+                event.setCancelled(true);
+                return;
+            }
 
             Sound soundOnShoot = Sound.valueOf(config.getString("sound_on_shoot"));
             player.playSound(player.getLocation(), soundOnShoot, 10, 30);

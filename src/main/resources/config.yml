@@ -20,8 +20,10 @@ no_arrow_damage: false
 glowing_arrow: false
 # Drop teleport items on death
 drop_on_death: false
-
+# Allow TeleportBow to have infinity arrow
 infinity_arrow: false
+# Give teleport items when respawned
+give_on_respawn: true
 
 bow:
   display_name: "<#0080ff>Teleport Bow"
