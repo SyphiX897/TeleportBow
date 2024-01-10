@@ -1,8 +1,11 @@
 package ir.syphix.teleportbow.listener;
 
+import com.destroystokyo.paper.ParticleBuilder;
 import ir.syphix.teleportbow.utils.Items;
 import ir.syrent.origin.paper.Origin;
 import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
@@ -24,9 +27,25 @@ public class ProjectileHitListener implements Listener {
             PersistentDataContainer arrowData = arrow.getPersistentDataContainer();
             if (arrowData.has(Items.ARROW_ENTITY_KEY)) {
                 if (player.hasPermission("teleportbow.use")) {
+
+                    ConfigurationSection particleSection = config.getConfigurationSection("arrow.hit_particle");
+
+
                     if (event.getHitEntity() != null) {
                         if (config.getBoolean("teleport_to_entity")) {
+
                             Location hitEntityLocation = event.getEntity().getLocation();
+
+                            ConfigurationSection particleHittingEntitySection = particleSection.getConfigurationSection("on_hitting_entity");
+
+                            if (particleHittingEntitySection.getBoolean("enabled")) {
+
+                                String particleName = particleHittingEntitySection.getString("name");
+                                double particleRadius = particleHittingEntitySection.getDouble("radius");
+
+                                summonParticles(particleName, hitEntityLocation, particleRadius);
+                            }
+
                             player.teleport(entityLocation(player, hitEntityLocation));
                         }
                         arrowGiver(player, event.getEntity());
@@ -36,6 +55,17 @@ public class ProjectileHitListener implements Listener {
                         if (config.getBoolean("teleport_to_block")) {
                             Location arrowLocation = event.getEntity().getLocation();
                             player.setInvulnerable(true);
+
+                            ConfigurationSection particleBlockHittingSection = particleSection.getConfigurationSection("on_hitting_block");
+
+                            if (particleBlockHittingSection.getBoolean("enabled")) {
+
+                                String particleName = particleBlockHittingSection.getString("name");
+                                double particleRadius = particleBlockHittingSection.getDouble("radius");
+
+                                summonParticles(particleName, arrowLocation, particleRadius);
+                            }
+
 
                             player.teleport(arrowLocation(player, arrowLocation));
 
@@ -70,6 +100,18 @@ public class ProjectileHitListener implements Listener {
         hitEntityLocation.setYaw(playerYaw);
         hitEntityLocation.setPitch(playerPitch);
         return hitEntityLocation;
+    }
+
+    private void summonParticles(String particleName, Location location, double radius) {
+        for (int i = 0; i <= 360; i += 4) {
+            double x = Math.sin(Math.toRadians(i)) * radius;
+            double y = Math.cos(Math.toRadians(i)) * radius;
+
+            Location particleLocation = location.clone().add(x, 0, y);
+
+            location.getWorld().spawnParticle(Particle.valueOf(particleName), particleLocation, 1);
+
+        }
     }
 
 

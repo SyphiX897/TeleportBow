@@ -38,6 +38,16 @@ arrow:
   display_name: "<#0080ff>Arrow"
   # If you want to disable this feature, set it to ""
   custom_name: "<green>Arrow"
+  # summon particle on arrow hit
+  hit_particle:
+    on_hitting_entity:
+      enabled: true
+      name: "VILLAGER_HAPPY"
+      radius: 1.0
+    on_hitting_block:
+      enabled: true
+      name: "VILLAGER_HAPPY"
+      radius: 1.0
   lore:
     - ""
     - "<aqua>The arrow of gods that's been used by Apollo itself."
