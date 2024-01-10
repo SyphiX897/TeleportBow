@@ -3,6 +3,9 @@ Teleport Bow is a simple and useful plugin to use in your minecraft servers. You
 
 Minecraft Version: 1.19+ - 1.20+
 
+Hangar: [TeleportBow](https://hangar.papermc.io/SyphiX/TeleportBow)
+
+
 # How to install: 
 1. Download the TeleportBow jar file.
 2. Place the TeleportBow jar file in your plugins directory.
