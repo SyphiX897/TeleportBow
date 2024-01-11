@@ -48,6 +48,10 @@ arrow:
       enabled: true
       name: "VILLAGER_HAPPY"
       radius: 1.0
+  # summon particle on arrow shoot
+  launch_particle:
+    enabled: true
+    name: "VILLAGER_HAPPY"
   lore:
     - ""
     - "<aqua>The arrow of gods that's been used by Apollo itself."

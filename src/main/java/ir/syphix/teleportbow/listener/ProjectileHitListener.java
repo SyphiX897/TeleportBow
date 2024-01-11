@@ -105,9 +105,9 @@ public class ProjectileHitListener implements Listener {
     private void summonParticles(String particleName, Location location, double radius) {
         for (int i = 0; i <= 360; i += 4) {
             double x = Math.sin(Math.toRadians(i)) * radius;
-            double y = Math.cos(Math.toRadians(i)) * radius;
+            double z = Math.cos(Math.toRadians(i)) * radius;
 
-            Location particleLocation = location.clone().add(x, 0, y);
+            Location particleLocation = location.clone().add(x, 0, z);
 
             location.getWorld().spawnParticle(Particle.valueOf(particleName), particleLocation, 1);
 
