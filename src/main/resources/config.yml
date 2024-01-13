@@ -8,8 +8,6 @@
 
 # Give teleport items
 give_on_join: true
-# The sound that will be played after the player shoots the arrow using the teleport bow
-sound_on_shoot: "BLOCK_GLASS_BREAK"
 # Should player teleport to arrow location if it hit an entity?
 teleport_to_entity: true
 # Should player teleport to arrow location if it hit a block?
@@ -36,22 +34,43 @@ bow:
 
 arrow:
   display_name: "<#0080ff>Arrow"
-  # If you want to disable this feature, set it to ""
-  custom_name: "<green>Arrow"
+  # Arrow Nameplate on launch
+  custom_name:
+    enabled: true
+    name: "<green>Arrow"
+
   # summon particle on arrow hit
   hit_particle:
     on_hitting_entity:
       enabled: true
       name: "VILLAGER_HAPPY"
       radius: 1.0
+
     on_hitting_block:
       enabled: true
       name: "VILLAGER_HAPPY"
       radius: 1.0
+
   # summon particle on arrow shoot
   launch_particle:
     enabled: true
     name: "VILLAGER_HAPPY"
+
+  # Play sound on arrow hit
+  hit_sound:
+    on_hitting_entity:
+      enabled: true
+      name: "ENTITY_ENDERMAN_TELEPORT"
+
+    on_hitting_block:
+      enabled: true
+      name: "ENTITY_ENDERMAN_TELEPORT"
+
+  # Play sound on arrow shoot
+  launch_sound:
+    enabled: true
+    name: "ENTITY_PLAYER_LEVELUP"
+
   lore:
     - ""
     - "<aqua>The arrow of gods that's been used by Apollo itself."

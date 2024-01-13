@@ -54,8 +54,9 @@ public class GiveBowCommand extends Command {
                             return;
                         }
 
-                        target.getInventory().setItem(config.getInt("teleport-bow.slot"), Items.getTeleportBow());
+                        target.getInventory().setItem(config.getInt("bow.slot"), Items.getTeleportBow());
                         target.getInventory().setItem(config.getInt("arrow.slot"), Items.getArrow());
+                        return;
                     }
 
                     if (player == null) return;
@@ -67,7 +68,7 @@ public class GiveBowCommand extends Command {
                         return;
                     }
 
-                    player.getInventory().setItem(config.getInt("teleport-bow.slot"), Items.getTeleportBow());
+                    player.getInventory().setItem(config.getInt("bow.slot"), Items.getTeleportBow());
                     player.getInventory().setItem(config.getInt("arrow.slot"), Items.getArrow());
                 });
         saveCommand(command);

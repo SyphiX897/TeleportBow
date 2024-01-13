@@ -1,6 +1,5 @@
 package ir.syphix.teleportbow.listener;
 
-import ir.syphix.teleportbow.TeleportBow;
 import ir.syphix.teleportbow.utils.Items;
 import ir.syrent.origin.paper.Origin;
 import ir.syrent.origin.paper.utils.ComponentUtils;
@@ -60,24 +59,29 @@ public class ProjectileLaunchListener implements Listener {
                 event.setCancelled(true);
                 return;
             }
-
-            Sound soundOnShoot = Sound.valueOf(config.getString("sound_on_shoot"));
-            player.playSound(player.getLocation(), soundOnShoot, 10, 30);
             arrow.getPersistentDataContainer().set(Items.ARROW_ENTITY_KEY, PersistentDataType.STRING, "arrow");
 
             if (config.getBoolean("glowing_arrow")) {
                 arrow.setGlowing(true);
             }
 
+            ConfigurationSection arrowLaunchSoundSection = config.getConfigurationSection("arrow.launch_sound");
+            if (arrowLaunchSoundSection.getBoolean("enabled")) {
+                String soundName = arrowLaunchSoundSection.getString("name");
+                if (soundName == null) return;
+
+                player.playSound(player.getLocation(), Sound.valueOf(soundName), 10, 30);
+            }
+
             ConfigurationSection launchParticleSection = config.getConfigurationSection("arrow.launch_particle");
             if (launchParticleSection.getBoolean("enabled")) {
                 String particleName = launchParticleSection.getString("name");
+                if (particleName == null) return;
 
                 Bukkit.getScheduler().runTaskTimer(Origin.getPlugin(), task -> {
                     if (!arrow.isValid()) {
                         task.cancel();
                     }
-
                     Location arrowLocation = arrow.getLocation().clone();
                     arrowLocation.getWorld().spawnParticle(Particle.valueOf(particleName), arrowLocation, 1);
                 },0, 1);
@@ -87,18 +91,17 @@ public class ProjectileLaunchListener implements Listener {
                 player.getInventory().setItem(config.getInt("arrow.slot"), Items.getArrow());
             }
 
-            String customName = config.getString("arrow.custom_name");
+            ConfigurationSection customNameSection = config.getConfigurationSection("arrow.custom_name");
+            if (customNameSection.getBoolean("enabled")) {
+                String customName = customNameSection.getString("name");
+                if (customName == null) return;
 
-            if (customName == null) {
-                throw new NullPointerException("Arrow custom name is null on configuration file, please set a valid value for it.");
+                arrow.customName(ComponentUtils.component(customName));
+                arrow.setCustomNameVisible(true);
             }
 
-            if (customName.isEmpty()) return;
-
-            arrow.customName(ComponentUtils.component(customName));
-            arrow.setCustomNameVisible(true);
-
         }
+
     }
 
 }
