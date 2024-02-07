@@ -3,8 +3,8 @@ Teleport Bow is a simple and useful plugin to use in your minecraft servers. You
 
 Minecraft Version: 1.19+ - 1.20+
 
-Hangar: [TeleportBow](https://hangar.papermc.io/SyphiX/TeleportBow)
-Modrinth: [TeleportBow](https://modrinth.com/plugin/teleportbow)
+* Hangar: [TeleportBow](https://hangar.papermc.io/SyphiX/TeleportBow)
+* Modrinth: [TeleportBow](https://modrinth.com/plugin/teleportbow)
 
 
 # How to install: 
