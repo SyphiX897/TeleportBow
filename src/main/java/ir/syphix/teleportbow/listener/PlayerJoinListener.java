@@ -25,10 +25,10 @@ public class PlayerJoinListener implements Listener {
                 if (item == null) continue;
                 if (!item.hasItemMeta()) continue;
                 PersistentDataContainer itemData = item.getItemMeta().getPersistentDataContainer();
-                if (itemData.has(Items.CUSTOME_ITEM_KEY))
+                if (itemData.has(Items.CUSTOM_ITEM_KEY))
                     player.getInventory().clear(i);
             }
-            player.getInventory().setItem(config.getInt("teleport-bow.slot"), Items.getTeleportBow());
+            player.getInventory().setItem(config.getInt("bow.slot"), Items.getTeleportBow());
             player.getInventory().setItem(config.getInt("arrow.slot"), Items.getArrow());
         }
     }

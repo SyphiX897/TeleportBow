@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Java.MinecraftPlugins.TeleportBow.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Java.MinecraftPlugins.TeleportBow.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MinecraftPlugins.TeleportBow.main.iml" filepath="$PROJECT_DIR$/.idea/modules/MinecraftPlugins.TeleportBow.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeleportBow.main.iml" filepath="$PROJECT_DIR$/.idea/modules/TeleportBow.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ir.syphix.TeleportBow.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ir.syphix.TeleportBow.main.iml" />
     </modules>

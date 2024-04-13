@@ -20,7 +20,7 @@ public class Items {
 
     static FileConfiguration config = Origin.getPlugin().getConfig();
 
-    public static NamespacedKey CUSTOME_ITEM_KEY = new NamespacedKey(Origin.getPlugin(), "custome_item");
+    public static NamespacedKey CUSTOM_ITEM_KEY = new NamespacedKey(Origin.getPlugin(), "custome_item");
     public static NamespacedKey TYPE_KEY = new NamespacedKey(Origin.getPlugin(), "type");
     public static NamespacedKey ARROW_ENTITY_KEY = new NamespacedKey(Origin.getPlugin(), "custom_arrow");
 
@@ -32,7 +32,7 @@ public class Items {
         }
         bow.editMeta(meta -> {
             meta.displayName(ComponentUtils.component(config.getString("bow.display_name")).decoration(TextDecoration.ITALIC, false));
-            meta.getPersistentDataContainer().set(CUSTOME_ITEM_KEY, PersistentDataType.STRING, "teleportBow");
+            meta.getPersistentDataContainer().set(CUSTOM_ITEM_KEY, PersistentDataType.STRING, "teleportBow");
             meta.getPersistentDataContainer().set(TYPE_KEY, PersistentDataType.STRING, "teleportBow");
             meta.setUnbreakable(config.getBoolean("bow.unbreakable"));
             meta.lore(lore);
@@ -56,7 +56,7 @@ public class Items {
         }
         arrow.editMeta(meta -> {
             meta.displayName(ComponentUtils.component(config.getString("arrow.display_name")).decoration(TextDecoration.ITALIC, false));
-            meta.getPersistentDataContainer().set(CUSTOME_ITEM_KEY, PersistentDataType.STRING, "arrow");
+            meta.getPersistentDataContainer().set(CUSTOM_ITEM_KEY, PersistentDataType.STRING, "arrow");
             meta.getPersistentDataContainer().set(TYPE_KEY, PersistentDataType.STRING, "teleportBowArrow");
             meta.lore(lore);
         });

@@ -16,7 +16,7 @@ public class ItemDropListener implements Listener {
         if (!player.hasPermission("teleportbow.drop")) {
             ItemStack dropedItem = event.getItemDrop().getItemStack();
             if (!dropedItem.hasItemMeta()) return;
-            if (dropedItem.getItemMeta().getPersistentDataContainer().has(Items.CUSTOME_ITEM_KEY) && dropedItem.getItemMeta().getPersistentDataContainer().has(Items.TYPE_KEY)) {
+            if (dropedItem.getItemMeta().getPersistentDataContainer().has(Items.CUSTOM_ITEM_KEY) && dropedItem.getItemMeta().getPersistentDataContainer().has(Items.TYPE_KEY)) {
                 event.setCancelled(true);
             }
         }

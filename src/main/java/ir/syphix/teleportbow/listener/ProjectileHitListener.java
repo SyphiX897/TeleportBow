@@ -36,18 +36,20 @@ public class ProjectileHitListener implements Listener {
                             ConfigurationSection entityHitParticleSection = config.getConfigurationSection("arrow.hit_particle.on_hitting_entity");
                             if (entityHitParticleSection.getBoolean("enabled")) {
                                 String particleName = entityHitParticleSection.getString("name");
-                                if (particleName == null) return;
-                                double particleRadius = entityHitParticleSection.getDouble("radius");
+                                if (particleName != null) {
+                                    double particleRadius = entityHitParticleSection.getDouble("radius");
 
-                                summonParticles(particleName, hitEntityLocation, particleRadius);
+                                    summonParticles(particleName, hitEntityLocation, particleRadius);
+                                }
                             }
 
                             ConfigurationSection entityHitSoundSection = config.getConfigurationSection("arrow.hit_sound.on_hitting_entity");
                             if (entityHitSoundSection.getBoolean("enabled")) {
                                 String soundName = entityHitSoundSection.getString("name");
-                                if (soundName == null) return;
+                                if (soundName != null) {
+                                    player.playSound(player.getLocation(), Sound.valueOf(soundName), 10, 30);
+                                }
 
-                                player.playSound(player.getLocation(), Sound.valueOf(soundName), 10, 30);
                             }
 
                             player.teleport(entityLocation(player, hitEntityLocation));
@@ -63,18 +65,20 @@ public class ProjectileHitListener implements Listener {
                             ConfigurationSection particleBlockHittingSection = config.getConfigurationSection("arrow.hit_particle.on_hitting_block");
                             if (particleBlockHittingSection.getBoolean("enabled")) {
                                 String particleName = particleBlockHittingSection.getString("name");
-                                if (particleName == null) return;
-                                double particleRadius = particleBlockHittingSection.getDouble("radius");
+                                if (particleName != null) {
+                                    double particleRadius = particleBlockHittingSection.getDouble("radius");
 
-                                summonParticles(particleName, arrowLocation, particleRadius);
+                                    summonParticles(particleName, arrowLocation, particleRadius);
+                                }
                             }
 
                             ConfigurationSection blockHitSoundSection = config.getConfigurationSection("arrow.hit_sound.on_hitting_block");
                             if (blockHitSoundSection.getBoolean("enabled")) {
                                 String soundName = blockHitSoundSection.getString("name");
-                                if (soundName == null) return;
+                                if (soundName != null) {
+                                    player.playSound(player.getLocation(), Sound.valueOf(soundName), 10, 30);
+                                }
 
-                                player.playSound(player.getLocation(), Sound.valueOf(soundName), 10, 30);
                             }
 
                             player.teleport(arrowLocation(player, arrowLocation));

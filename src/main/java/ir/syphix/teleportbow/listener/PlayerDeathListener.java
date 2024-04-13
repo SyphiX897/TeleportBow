@@ -20,7 +20,7 @@ public class PlayerDeathListener implements Listener {
         event.getDrops().removeIf((item) -> {
             if (!item.hasItemMeta()) return false;
             ItemMeta meta = item.getItemMeta();
-            return meta.getPersistentDataContainer().has(Items.CUSTOME_ITEM_KEY);
+            return meta.getPersistentDataContainer().has(Items.CUSTOM_ITEM_KEY);
         });
     }
 }

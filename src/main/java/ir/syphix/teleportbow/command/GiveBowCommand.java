@@ -41,6 +41,7 @@ public class GiveBowCommand extends Command {
                     Optional<String> targetOptional = context.getOptional("player");
                     if (targetOptional.isPresent()) {
                         Player target = Bukkit.getPlayerExact(targetOptional.get());
+                        if (player == null) return;
                         if (target == null) {
                             player.sendMessage(ComponentUtils.component("<gradient:dark_red:red>This player does not exist"));
                             return;
@@ -77,7 +78,7 @@ public class GiveBowCommand extends Command {
     private boolean hasCustomItem(Player player, Material material) {
         return Arrays.stream(player.getInventory().getContents()).filter(Objects::nonNull).anyMatch((item) -> item.hasItemMeta()
                 && item.getItemMeta().getPersistentDataContainer().has(Items.TYPE_KEY)
-                && item.getItemMeta().getPersistentDataContainer().has(Items.CUSTOME_ITEM_KEY)
+                && item.getItemMeta().getPersistentDataContainer().has(Items.CUSTOM_ITEM_KEY)
                 && item.getType() == material);
     }
 

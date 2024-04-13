@@ -15,6 +15,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 
 public class ProjectileLaunchListener implements Listener {
 
@@ -42,7 +45,7 @@ public class ProjectileLaunchListener implements Listener {
                 hand = "OFF_HAND";
             }
 
-            if (hand.equals("null")) return;
+            if (hand == null) return;
 
             PersistentDataContainer itemData;
 
@@ -53,6 +56,15 @@ public class ProjectileLaunchListener implements Listener {
             }
 
             if (!itemData.has(Items.TYPE_KEY)) return;
+
+            if (Arrays.stream(player.getInventory().getContents()).filter(Objects::nonNull).noneMatch(item -> item.hasItemMeta()
+                    && item.getItemMeta().getPersistentDataContainer().has(Items.TYPE_KEY)
+                    && item.getItemMeta().getPersistentDataContainer().has(Items.CUSTOM_ITEM_KEY)
+                    && item.getType().equals(Material.ARROW))) {
+                player.sendMessage(ComponentUtils.component("<gradient:dark_red:red>You dont have an arrow to teleport!"));
+                event.setCancelled(true);
+                return;
+            }
 
             if (!player.hasPermission("teleportbow.use")) {
                 player.sendMessage(ComponentUtils.component("<gradient:dark_red:red>You dont have permission to use TeleportBow!"));
@@ -68,23 +80,24 @@ public class ProjectileLaunchListener implements Listener {
             ConfigurationSection arrowLaunchSoundSection = config.getConfigurationSection("arrow.launch_sound");
             if (arrowLaunchSoundSection.getBoolean("enabled")) {
                 String soundName = arrowLaunchSoundSection.getString("name");
-                if (soundName == null) return;
+                if (soundName != null) {
+                    player.playSound(player.getLocation(), Sound.valueOf(soundName), 10, 30);
+                }
 
-                player.playSound(player.getLocation(), Sound.valueOf(soundName), 10, 30);
             }
 
             ConfigurationSection launchParticleSection = config.getConfigurationSection("arrow.launch_particle");
             if (launchParticleSection.getBoolean("enabled")) {
                 String particleName = launchParticleSection.getString("name");
-                if (particleName == null) return;
-
-                Bukkit.getScheduler().runTaskTimer(Origin.getPlugin(), task -> {
-                    if (!arrow.isValid()) {
-                        task.cancel();
-                    }
-                    Location arrowLocation = arrow.getLocation().clone();
-                    arrowLocation.getWorld().spawnParticle(Particle.valueOf(particleName), arrowLocation, 1);
-                },0, 1);
+                if (particleName != null) {
+                    Bukkit.getScheduler().runTaskTimer(Origin.getPlugin(), task -> {
+                        if (!arrow.isValid()) {
+                            task.cancel();
+                        }
+                        Location arrowLocation = arrow.getLocation().clone();
+                        arrowLocation.getWorld().spawnParticle(Particle.valueOf(particleName), arrowLocation, 1);
+                    },0, 1);
+                }
             }
 
             if (config.getBoolean("infinity_arrow")) {
@@ -94,10 +107,11 @@ public class ProjectileLaunchListener implements Listener {
             ConfigurationSection customNameSection = config.getConfigurationSection("arrow.custom_name");
             if (customNameSection.getBoolean("enabled")) {
                 String customName = customNameSection.getString("name");
-                if (customName == null) return;
+                if (customName != null) {
+                    arrow.customName(ComponentUtils.component(customName));
+                    arrow.setCustomNameVisible(true);
+                };
 
-                arrow.customName(ComponentUtils.component(customName));
-                arrow.setCustomNameVisible(true);
             }
 
         }

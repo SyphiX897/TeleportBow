@@ -19,7 +19,7 @@ public class BowMoveListener implements Listener {
                 if (event.getCurrentItem() != null) {
                     ItemStack clickedItem = event.getCurrentItem();
                     if (clickedItem.hasItemMeta()) {
-                        if (clickedItem.getItemMeta().getPersistentDataContainer().has(Items.CUSTOME_ITEM_KEY) && clickedItem.getItemMeta().getPersistentDataContainer().has(Items.TYPE_KEY)) {
+                        if (clickedItem.getItemMeta().getPersistentDataContainer().has(Items.CUSTOM_ITEM_KEY) && clickedItem.getItemMeta().getPersistentDataContainer().has(Items.TYPE_KEY)) {
                             event.setCancelled(true);
                         }
                     }
@@ -33,9 +33,10 @@ public class BowMoveListener implements Listener {
         Player player = event.getPlayer();
         if (!player.hasPermission("teleportbow.changeslot") && player.getGameMode() != GameMode.CREATIVE) {
 
-            if (event.getOffHandItem().getItemMeta().getPersistentDataContainer().has(Items.CUSTOME_ITEM_KEY) &&
+
+            if (event.getOffHandItem().hasItemMeta() && event.getOffHandItem().getItemMeta().getPersistentDataContainer().has(Items.CUSTOM_ITEM_KEY) &&
                     event.getOffHandItem().getItemMeta().getPersistentDataContainer().has(Items.TYPE_KEY) ||
-                    event.getMainHandItem().getItemMeta().getPersistentDataContainer().has(Items.CUSTOME_ITEM_KEY) &&
+                    event.getMainHandItem().hasItemMeta() && event.getMainHandItem().getItemMeta().getPersistentDataContainer().has(Items.CUSTOM_ITEM_KEY) &&
                             event.getMainHandItem().getItemMeta().getPersistentDataContainer().has(Items.TYPE_KEY)) {
                 event.setCancelled(true);
             }

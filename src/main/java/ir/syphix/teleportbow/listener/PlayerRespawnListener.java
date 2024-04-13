@@ -17,7 +17,7 @@ public class PlayerRespawnListener implements Listener {
         if (config.getBoolean("give_on_respawn")) {
             Player player = event.getPlayer();
 
-            player.getInventory().setItem(config.getInt("teleport-bow.slot"), Items.getTeleportBow());
+            player.getInventory().setItem(config.getInt("bow.slot"), Items.getTeleportBow());
             player.getInventory().setItem(config.getInt("arrow.slot"), Items.getArrow());
         }
     }
