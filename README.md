@@ -44,7 +44,7 @@ maven { url = "https://repo.sayandev.org/snapshots" }
 ```
 Dependency
 ```gradle
-implementation "ir.syphix:TeleportBow:2.0.0"
+implementation "ir.syphix:TeleportBow:tag"
 ```
 * Replace Tag with the desired version of TeleportBow.
 
@@ -61,7 +61,7 @@ Dependency
 <dependency>
   <groupId>ir.syphix</groupId>
   <artifactId>TeleportBow</artifactId>
-  <version>2.0.0</version>
+  <version>tag</version>
 </dependency>
 ```
 * Replace Tag with the desired version of TeleportBow.
