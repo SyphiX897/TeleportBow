@@ -23,48 +23,5 @@ Minecraft Version: 1.14+ - 1.20+
 2. /teleportbow give <player_name> - Gives the TeleportBow and arrow to a player.
 3. /teleportbow reload - Reload the plugin
 
-# Integration
-### **Gradle Kotlin**
-
-Repository
-```gradle.kts
-maven { url = uri("https://repo.sayandev.org/snapshots" }
-```
-Dependency
-```gradle.kts
-implementation("ir.syphix:TeleportBow:tag")
-```
-* Replace Tag with the desired version of TeleportBow.
-
-### **Gradle Groovy**
-
-Repository
-```gradle
-maven { url = "https://repo.sayandev.org/snapshots" }
-```
-Dependency
-```gradle
-implementation "ir.syphix:TeleportBow:2.0.0"
-```
-* Replace Tag with the desired version of TeleportBow.
-
-### **Maven**
-
-Repository
-```xml
-<repository>
-  <url>https://repo.sayandev.org/snapshots</url>
-</repository>
-```
-Dependency
-```xml
-<dependency>
-  <groupId>ir.syphix</groupId>
-  <artifactId>TeleportBow</artifactId>
-  <version>2.0.0</version>
-</dependency>
-```
-* Replace Tag with the desired version of TeleportBow.
-
 # Found any problems? contact to me
 Discord ID: .syphix
