@@ -27,11 +27,11 @@ Minecraft Version: 1.14+ - 1.20+
 **Gradle Kotlin**
 
 Repository
-```
+```gradle.kts
 maven { url = uri("https://repo.sayandev.org/snapshots" }
 ```
 Dependency
-```
+```gradle.kts
 implementation("ir.syphix:TeleportBow:tag")
 ```
 * Replace Tag with the desired version of TeleportBow.
@@ -39,11 +39,11 @@ implementation("ir.syphix:TeleportBow:tag")
 **Gradle Groovy**
 
 Repository
-```
+```gradle
 maven { url = "https://repo.sayandev.org/snapshots" }
 ```
 Dependency
-```
+```gradle
 implementation "ir.syphix:TeleportBow:2.0.0"
 ```
 * Replace Tag with the desired version of TeleportBow.
@@ -51,13 +51,13 @@ implementation "ir.syphix:TeleportBow:2.0.0"
 **Maven**
 
 Repository
-```
+```xml
 <repository>
   <url>https://repo.sayandev.org/snapshots</url>
 </repository>
 ```
 Dependency
-```
+```xml
 <dependency>
   <groupId>ir.syphix</groupId>
   <artifactId>TeleportBow</artifactId>
