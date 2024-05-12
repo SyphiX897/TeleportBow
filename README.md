@@ -19,8 +19,9 @@ Minecraft Version: 1.14+ - 1.20+
 4. teleportbow.commands
 
 # Commands:
-1. /givebow - Give the TeleportBow and arrow
-2. /givebow <player_name> - Gives the TeleportBow and arrow to a player.
+1. /teleportbow give - Give the TeleportBow and arrow
+2. /teleportbow give <player_name> - Gives the TeleportBow and arrow to a player.
+3. /teleportbow reload - Reload the plugin
 
 # Found any problems? contact to me
 Discord ID: .syphix
