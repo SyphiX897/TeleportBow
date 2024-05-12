@@ -13,15 +13,15 @@ Minecraft Version: 1.14+ - 1.20+
 3. Once the plugin compiles, grab the jar from /bin folder.
 
 # Permissions
-1. teleportbow.use
-2. teleportbow.drop
-3. teleportbow.changeslot
-4. teleportbow.commands
+* teleportbow.use
+*  teleportbow.drop
+* teleportbow.changeslot
+* teleportbow.commands
 
 # Commands
-1. /teleportbow give - Give the TeleportBow and arrow
-2. /teleportbow give <player_name> - Gives the TeleportBow and arrow to a player.
-3. /teleportbow reload - Reload the plugin
+* /teleportbow give - Give the TeleportBow and arrow
+* /teleportbow give <player_name> - Gives the TeleportBow and arrow to a player.
+* /teleportbow reload - Reload the plugin
 
 # Integration
 ### **Gradle Kotlin**
