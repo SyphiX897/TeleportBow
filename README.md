@@ -24,7 +24,7 @@ Minecraft Version: 1.14+ - 1.20+
 3. /teleportbow reload - Reload the plugin
 
 # Integration
-**Gradle Kotlin**
+### **Gradle Kotlin**
 
 Repository
 ```gradle.kts
@@ -36,7 +36,7 @@ implementation("ir.syphix:TeleportBow:tag")
 ```
 * Replace Tag with the desired version of TeleportBow.
 
-**Gradle Groovy**
+### **Gradle Groovy**
 
 Repository
 ```gradle
@@ -48,7 +48,7 @@ implementation "ir.syphix:TeleportBow:2.0.0"
 ```
 * Replace Tag with the desired version of TeleportBow.
 
-**Maven**
+### **Maven**
 
 Repository
 ```xml
