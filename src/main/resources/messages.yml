@@ -1,0 +1,7 @@
+prefix: "<aqua>TeleportBow<gray> >> "
+
+need_permission: "<red>You don't have permission to do this!"
+already_has: "<red>This player already has these items!"
+give_items: "<green>Successfully added items to target inventory"
+missing_arrow: "<red>You don't have any teleport arrow in your inventory!"
+reload: "<green>Plugin successfully reloaded."

@@ -1,132 +1,101 @@
 package ir.syphix.teleportbow.listener;
 
-import com.destroystokyo.paper.ParticleBuilder;
-import ir.syphix.teleportbow.utils.Items;
-import ir.syrent.origin.paper.Origin;
+import ir.syphix.teleportbow.data.DataManager;
+import ir.syphix.teleportbow.item.Items;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.persistence.PersistentDataContainer;
+import org.sayandev.stickynote.bukkit.StickyNote;
 
 
 public class ProjectileHitListener implements Listener {
 
-    FileConfiguration config = Origin.getPlugin().getConfig();
-
     @EventHandler
-    public void onHit(ProjectileHitEvent event) {
-        if (event.getEntity().getShooter() instanceof Player player) {
-            if (!(event.getEntity() instanceof Arrow arrow)) return;
-            PersistentDataContainer arrowData = arrow.getPersistentDataContainer();
-            if (arrowData.has(Items.ARROW_ENTITY_KEY)) {
-                if (player.hasPermission("teleportbow.use")) {
+    public void onProjectileHit(ProjectileHitEvent event) {
+        if (!(event.getEntity().getShooter() instanceof Player player)) return;
+        if (!(event.getEntity() instanceof Arrow arrow)) return;
+        PersistentDataContainer arrowData = arrow.getPersistentDataContainer();
+        if (!arrowData.has(Items.TELEPORTBOW)) return;
+        if (!player.hasPermission("teleportbow.use")) return;
 
-                    if (event.getHitEntity() != null) {
-                        if (config.getBoolean("teleport_to_entity")) {
-                            Location hitEntityLocation = event.getEntity().getLocation();
+        if (!DataManager.Bow.isInfinityArrow()) {
+            player.getInventory().setItem(DataManager.Arrow.slot(), Items.arrow());
+        }
 
-                            ConfigurationSection entityHitParticleSection = config.getConfigurationSection("arrow.hit_particle.on_hitting_entity");
-                            if (entityHitParticleSection.getBoolean("enabled")) {
-                                String particleName = entityHitParticleSection.getString("name");
-                                if (particleName != null) {
-                                    double particleRadius = entityHitParticleSection.getDouble("radius");
+        Location arrowLocation = arrow.getLocation();
+        if (event.getHitEntity() != null) {
+            if (!DataManager.IsEnable.teleportToEntity()) return;
 
-                                    summonParticles(particleName, hitEntityLocation, particleRadius);
-                                }
-                            }
-
-                            ConfigurationSection entityHitSoundSection = config.getConfigurationSection("arrow.hit_sound.on_hitting_entity");
-                            if (entityHitSoundSection.getBoolean("enabled")) {
-                                String soundName = entityHitSoundSection.getString("name");
-                                if (soundName != null) {
-                                    player.playSound(player.getLocation(), Sound.valueOf(soundName), 10, 30);
-                                }
-
-                            }
-
-                            player.teleport(entityLocation(player, hitEntityLocation));
-                        }
-                        arrowGiver(player, event.getEntity());
-                        return;
-                    }
-                    if (event.getHitBlock() != null) {
-                        if (config.getBoolean("teleport_to_block")) {
-                            Location arrowLocation = event.getEntity().getLocation();
-                            player.setInvulnerable(true);
-
-                            ConfigurationSection particleBlockHittingSection = config.getConfigurationSection("arrow.hit_particle.on_hitting_block");
-                            if (particleBlockHittingSection.getBoolean("enabled")) {
-                                String particleName = particleBlockHittingSection.getString("name");
-                                if (particleName != null) {
-                                    double particleRadius = particleBlockHittingSection.getDouble("radius");
-
-                                    summonParticles(particleName, arrowLocation, particleRadius);
-                                }
-                            }
-
-                            ConfigurationSection blockHitSoundSection = config.getConfigurationSection("arrow.hit_sound.on_hitting_block");
-                            if (blockHitSoundSection.getBoolean("enabled")) {
-                                String soundName = blockHitSoundSection.getString("name");
-                                if (soundName != null) {
-                                    player.playSound(player.getLocation(), Sound.valueOf(soundName), 10, 30);
-                                }
-
-                            }
-
-                            player.teleport(arrowLocation(player, arrowLocation));
-
-                            player.setInvulnerable(false);
-                        }
-                        arrowGiver(player, event.getEntity());
-                    }
+            if (DataManager.Arrow.isHitParticleOnHittingEntityEnable()) {
+                String particleName = DataManager.Arrow.hitParticleOnHittingEntityName();
+                double particleRadius = DataManager.Arrow.hitParticleOnHittingEntityRadius();
+                if (particleName == null) {
+                    StickyNote.error("Particle name is null in settings.yml! (arrow -> hit_particle -> on_hitting_entity -> particle)");
+                    return;
                 }
+                spawnParticle(particleName, arrowLocation, particleRadius);
             }
+
+            if (DataManager.Arrow.isHitSoundOnHittingEntityEnable()) {
+                String soundName = DataManager.Arrow.hitSoundOnHittingEntityName();
+                if (soundName == null) {
+                    StickyNote.error("Sound name is null in settings.yml! (arrow -> hit_sound -> on_hitting_entity -> sound)");
+                }
+                player.playSound(player.getLocation(), Sound.valueOf(soundName), 10, 30);
+            }
+
+            teleport(player, arrow);
+            return;
+        }
+
+        if (event.getHitBlock() != null) {
+            if (!DataManager.IsEnable.teleportToBlock()) return;
+
+            if (DataManager.Arrow.isHitParticleOnHittingBlockEnable()) {
+                String particleName = DataManager.Arrow.hitParticleOnHittingBlockName();
+                double particleRadius = DataManager.Arrow.hitParticleOnHittingBlockRadius();
+                if (particleName == null) {
+                    StickyNote.error("Particle name is null in settings.yml! (arrow -> hit_particle -> on_hitting_block -> particle)");
+                    return;
+                }
+                spawnParticle(particleName, arrowLocation, particleRadius);
+            }
+
+            if (DataManager.Arrow.isHitSoundOnHittingBlockEnable()) {
+
+                String soundName = DataManager.Arrow.hitSoundOnHittingBlockName();
+                if (soundName == null) {
+                    StickyNote.error("Sound name is null in settings.yml! (arrow -> hit_sound -> on_hitting_block -> sound)");
+                }
+                player.playSound(player.getLocation(), Sound.valueOf(soundName), 10, 30);
+            }
+
+            teleport(player, arrow);
         }
     }
 
-    public void arrowGiver(Player player, Entity arrow) {
+    private void teleport(Player player, Arrow arrow) {
+        Location arrowLocation = arrow.getLocation();
+        arrowLocation.setYaw(player.getEyeLocation().getYaw());
+        arrowLocation.setPitch(player.getEyeLocation().getPitch());
+
+        player.teleport(arrowLocation);
         arrow.remove();
-
-        if (player.isDead()) return;
-
-        player.getInventory().setItem(config.getInt("arrow.slot"), Items.getArrow());
-    }
-    public Location arrowLocation(Player player, Location arrowLocation) {
-        float playerYaw = player.getEyeLocation().getYaw();
-        float playerPitch = player.getEyeLocation().getPitch();
-
-        arrowLocation.setYaw(playerYaw);
-        arrowLocation.setPitch(playerPitch);
-        return arrowLocation;
-    }
-    public Location entityLocation(Player player, Location hitEntityLocation) {
-        float playerYaw = player.getEyeLocation().getYaw();
-        float playerPitch = player.getEyeLocation().getPitch();
-
-        hitEntityLocation.setYaw(playerYaw);
-        hitEntityLocation.setPitch(playerPitch);
-        return hitEntityLocation;
     }
 
-    private void summonParticles(String particleName, Location location, double radius) {
+    private void spawnParticle(String particleName, Location location, double radius) {
         for (int i = 0; i <= 360; i += 4) {
             double x = Math.sin(Math.toRadians(i)) * radius;
             double z = Math.cos(Math.toRadians(i)) * radius;
 
             Location particleLocation = location.clone().add(x, 0, z);
-
             location.getWorld().spawnParticle(Particle.valueOf(particleName), particleLocation, 1);
-
         }
     }
-
-
 }

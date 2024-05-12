@@ -1,34 +1,22 @@
 package ir.syphix.teleportbow.listener;
 
-import ir.syphix.teleportbow.utils.Items;
-import ir.syrent.origin.paper.Origin;
-import org.bukkit.Bukkit;
-import org.bukkit.Color;
-import org.bukkit.Location;
-import org.bukkit.Particle;
-import org.bukkit.configuration.file.FileConfiguration;
+import ir.syphix.teleportbow.data.DataManager;
+import ir.syphix.teleportbow.item.Items;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.persistence.PersistentDataContainer;
-
-import java.util.Random;
 
 public class EntityDamageByEntityListener implements Listener {
 
-    FileConfiguration config = Origin.getPlugin().getConfig();
-
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        if (!config.getBoolean("no_arrow_damage")) return;
+        if (!DataManager.Arrow.noDamage()) return;
         if (event.getDamager() instanceof Arrow arrow) {
             if (arrow.getShooter() instanceof Player player) {
-                PersistentDataContainer arrowData = arrow.getPersistentDataContainer();
-                if (arrowData.has(Items.ARROW_ENTITY_KEY)) {
-                    event.setCancelled(true);
-                }
+                if (!arrow.getPersistentDataContainer().has(Items.TELEPORTBOW)) return;
+                event.setCancelled(true);
             }
         }
     }

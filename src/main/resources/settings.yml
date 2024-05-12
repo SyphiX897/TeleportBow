@@ -1,0 +1,74 @@
+#####################################
+###          TeleportBow          ###
+###           by SyphiX           ###
+### https://github.com/SyphiX897  ###
+#####################################
+
+
+# Give teleport items
+give_on_join: true
+# Give teleport items when respawned
+give_on_respawn: true
+# Drop teleport items on death
+drop_on_death: false
+# Should player teleport to arrow location if it hit an entity?
+teleport_to_entity: true
+# Should player teleport to arrow location if it hit a block?
+teleport_to_block: true
+
+bow:
+  # Allow TeleportBow to have infinity arrow
+  infinity_arrow: true
+  # Bow itemStack details
+  item:
+    display_name: "&9TeleportBow"
+    lore:
+      - ""
+      - "&bJump between universe! Don't believe me? try and see!"
+    enchantment_particle: true
+    unbreakable: true
+    slot: 0
+
+arrow:
+  # Set glowing effect on arrow
+  glowing: false
+  # Prevent arrow damage on hit
+  no_damage: true
+  # Arrow itemStack details
+  item:
+    display_name: "&9Arrow"
+    lore:
+      - ""
+      - "&bThe arrow of gods that's been used by Apollo itself."
+    enchantment_particle: true
+    slot: 9
+  # Arrow Nameplate on launch
+  hologram:
+    enabled: false
+    text: "&aArrow"
+  # Summon particle on arrow hit
+  hit_particle:
+    on_hitting_entity:
+      enabled: true
+      particle: "VILLAGER_HAPPY"
+      radius: 1.0
+    on_hitting_block:
+      enabled: true
+      particle: "VILLAGER_HAPPY"
+      radius: 1.0
+  # Play sound on arrow hit
+  hit_sound:
+    on_hitting_entity:
+      enabled: true
+      sound: "ENTITY_ENDERMAN_TELEPORT"
+    on_hitting_block:
+      enabled: true
+      sound: "ENTITY_ENDERMAN_TELEPORT"
+  # summon particle on arrow shoot
+  launch_particle:
+    enabled: true
+    particle: "VILLAGER_HAPPY"
+  # Play sound on arrow shoot
+  launch_sound:
+    enabled: true
+    sound: "ENTITY_PLAYER_LEVELUP"
