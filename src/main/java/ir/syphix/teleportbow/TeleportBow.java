@@ -5,15 +5,15 @@ import ir.syphix.teleportbow.file.FileManager;
 import ir.syphix.teleportbow.item.Items;
 import ir.syphix.teleportbow.listener.*;
 import ir.syphix.teleportbow.message.Messages;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.sayandev.stickynote.bukkit.StickyNote;
-import org.sayandev.stickynote.bukkit.StickyNotePlugin;
+import org.sayandev.stickynote.loader.bukkit.StickyNoteBukkitLoader;
 
-public final class TeleportBow extends StickyNotePlugin {
+public final class TeleportBow extends JavaPlugin {
 
     @Override
     public void onEnable() {
-//        new BukkitLibraryLoader(this);
-//        new WrappedStickyNotePlugin(this);
+        new StickyNoteBukkitLoader(this);
         new FileManager();
         new Messages();
         registerListeners();

@@ -1,13 +1,13 @@
 package ir.syphix.teleportbow.utils;
 
 import ir.syphix.teleportbow.message.Messages;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.command.CommandSender;
 import org.sayandev.stickynote.bukkit.StickyNote;
-import org.sayandev.stickynote.lib.kyori.adventure.platform.bukkit.BukkitAudiences;
-import org.sayandev.stickynote.lib.kyori.adventure.text.Component;
-import org.sayandev.stickynote.lib.kyori.adventure.text.format.TextDecoration;
-import org.sayandev.stickynote.lib.kyori.adventure.text.minimessage.MiniMessage;
-import org.sayandev.stickynote.lib.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 
 public class TextUtils extends Messages {
 

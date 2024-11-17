@@ -42,7 +42,7 @@ arrow:
       - "&bThe arrow of gods that's been used by Apollo itself."
     enchantment_particle: true
     slot: 9
-  # Arrow Nameplate on launch
+  # Arrow nameplate on launch
   hologram:
     enabled: false
     text: "&aArrow"

@@ -6,21 +6,21 @@ import ir.syphix.teleportbow.message.Messages;
 import ir.syphix.teleportbow.utils.TextUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.sayandev.stickynote.bukkit.command.StickyCommand;
-import org.sayandev.stickynote.bukkit.command.interfaces.SenderExtension;
-import org.sayandev.stickynote.lib.incendo.cloud.Command;
-import org.sayandev.stickynote.lib.incendo.cloud.bukkit.parser.PlayerParser;
+import org.incendo.cloud.Command;
+import org.incendo.cloud.bukkit.parser.PlayerParser;
+import org.sayandev.stickynote.bukkit.command.BukkitCommand;
+import org.sayandev.stickynote.bukkit.command.BukkitSender;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-public class TeleportBowCommand extends StickyCommand {
+public class TeleportBowCommand extends BukkitCommand {
     public TeleportBowCommand() {
         super("teleportbow", "tb", "tbow", "teleportb");
 
-        Command.Builder<SenderExtension> reload = getBuilder()
+        Command.Builder<BukkitSender> reload = builder()
                 .literal("reload")
-                .permission(constructBasePermission("reload"))
+                .permission("thepit.commands.reload")
                 .handler(context -> {
                     FileManager.SettingsFile.reload();
                     FileManager.MessagesFile.reload();
@@ -32,9 +32,9 @@ public class TeleportBowCommand extends StickyCommand {
                 });
         getManager().command(reload);
 
-        Command.Builder<SenderExtension> give = getBuilder()
+        Command.Builder<BukkitSender> give = builder()
                 .literal("give")
-                .permission(constructBasePermission("give"))
+                .permission("thepit.commands.give")
                 .optional("player", PlayerParser.playerParser())
                 .handler(context -> {
                     Player player = context.sender().player();
@@ -47,6 +47,7 @@ public class TeleportBowCommand extends StickyCommand {
     }
 
     private boolean hasCustomItem(Player player, Material material) {
+
         return Arrays.stream(player.getInventory().getContents()).filter(Objects::nonNull).anyMatch(item ->
                 item.hasItemMeta() && item.getItemMeta().getPersistentDataContainer().has(Items.TELEPORTBOW) && item.getType() == material);
     }

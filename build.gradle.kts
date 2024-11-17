@@ -1,11 +1,12 @@
+import org.sayandev.plugin.StickyNoteModules
 plugins {
     id("java")
     id("maven-publish")
-    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("org.sayandev.stickynote.project")
 }
 
 group = ("ir.syphix")
-version = ("2.0.0")
+version = ("2.0.1")
 
 repositories {
     mavenCentral()
@@ -19,8 +20,10 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
     implementation("com.alessiodp.libby:libby-bukkit:2.0.0-SNAPSHOT")
-    implementation("org.sayandev:stickynote-core:1.0.20")
-    implementation("org.sayandev:stickynote-bukkit:1.0.20")
+}
+
+stickynote {
+    modules(StickyNoteModules.BUKKIT, StickyNoteModules.BUKKIT_NMS)
 }
 
 tasks {
@@ -51,7 +54,10 @@ tasks {
     }
 
     java {
-        toolchain{
+//        sourceCompatibility = JavaVersion.VERSION_17
+//        targetCompatibility = JavaVersion.VERSION_17
+//        disableAutoTargetJvm()
+        toolchain {
             languageVersion.set(JavaLanguageVersion.of(17))
         }
         withJavadocJar()
